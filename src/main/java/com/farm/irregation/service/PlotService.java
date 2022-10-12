@@ -3,6 +3,7 @@ package com.farm.irregation.service;
 import com.farm.irregation.dto.ResponseBody;
 import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
+import com.farm.irregation.repository.CropRepository;
 import com.farm.irregation.repository.PlotRepository;
 import com.farm.irregation.utils.SystemCodes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class PlotService {
 
     @Autowired
     PlotRepository plotRepository;
+
+    @Autowired
+    CropRepository cropRepository;
 
     @Transactional
     public ResponseBody<Plot> addPlot(Plot plot) {
@@ -94,10 +98,11 @@ public class PlotService {
     }
 
     @Transactional
-    public ResponseBody<Plot> configurePlot(Integer id, Crop crop) {
+    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId) {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try{
-            Plot plot = plotRepository.findById(id).get();
+            Plot plot = plotRepository.findById(plotId).get();
+            Crop crop = cropRepository.findById(cropId).get();
             plot.setCrop(crop);
             plotRepository.save(plot);
             responseBody.setBody(plot);

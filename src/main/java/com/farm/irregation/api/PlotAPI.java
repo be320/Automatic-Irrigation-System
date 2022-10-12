@@ -22,7 +22,7 @@ public interface PlotAPI {
     @PutMapping("/{id}")
     public ResponseBody<Plot> editPlot(@PathVariable("id") Integer id, @RequestBody Plot plot);
 
-    @PutMapping("/{id}/configure")
-    public ResponseBody<Plot> configurePlot(@PathVariable("id") Integer id, @RequestBody Crop crop);
+    @PutMapping("/{plotId}/crop/{cropId}")
+    public ResponseBody<Plot> configurePlot(@PathVariable("plotId") Integer plotId, @PathVariable("cropId") Integer cropId);
 
 }
