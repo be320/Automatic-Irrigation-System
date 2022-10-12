@@ -1,6 +1,7 @@
 package com.farm.irregation.service;
 
 import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
 import com.farm.irregation.repository.PlotRepository;
 import com.farm.irregation.utils.SystemCodes;
@@ -80,6 +81,26 @@ public class PlotService {
                 existingPlot.setTopLeftLongitude(plot.getTopLeftLongitude());
             Plot updatedPlot = plotRepository.save(existingPlot);
             responseBody.setBody(updatedPlot);
+            responseBody.setCode(SystemCodes.StatusMessages.UPDATED.getCode());
+            responseBody.setDescription(SystemCodes.StatusMessages.UPDATED.getDescription());
+            return responseBody;
+        }
+        catch (Exception ex){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            responseBody.setCode(SystemCodes.StatusMessages.GENERAL_ERROR.getCode());
+            responseBody.setDescription(SystemCodes.StatusMessages.GENERAL_ERROR.getDescription() + ex.getMessage());
+            return responseBody;
+        }
+    }
+
+    @Transactional
+    public ResponseBody<Plot> configurePlot(Integer id, Crop crop) {
+        ResponseBody<Plot> responseBody = new ResponseBody<>();
+        try{
+            Plot plot = plotRepository.findById(id).get();
+            plot.setCrop(crop);
+            plotRepository.save(plot);
+            responseBody.setBody(plot);
             responseBody.setCode(SystemCodes.StatusMessages.UPDATED.getCode());
             responseBody.setDescription(SystemCodes.StatusMessages.UPDATED.getDescription());
             return responseBody;

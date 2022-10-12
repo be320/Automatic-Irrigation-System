@@ -2,6 +2,7 @@ package com.farm.irregation.controller;
 
 import com.farm.irregation.api.PlotAPI;
 import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
 import com.farm.irregation.service.PlotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class PlotController implements PlotAPI {
     public ResponseBody<Plot> editPlot(Integer id, Plot plot) {
         plot.setPlotId(id);
         return plotService.editPlot(plot);
+    }
+
+    @Override
+    public ResponseBody<Plot> configurePlot(Integer id, Crop crop) {
+        return plotService.configurePlot(id, crop);
     }
 
 }

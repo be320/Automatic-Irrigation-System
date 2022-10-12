@@ -25,6 +25,10 @@ public class Plot implements Serializable {
     @OneToMany(mappedBy = "plot", fetch = FetchType.LAZY)
     private List<TimeSlot> timeSlots;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "crop_id")
+    private Crop crop;
+
     public Integer getPlotId() {
         return plotId;
     }
@@ -55,5 +59,21 @@ public class Plot implements Serializable {
 
     public void setArea(Double area) {
         this.area = area;
+    }
+
+    public List<TimeSlot> getTimeSlots() {
+        return timeSlots;
+    }
+
+    public void setTimeSlots(List<TimeSlot> timeSlots) {
+        this.timeSlots = timeSlots;
+    }
+
+    public Crop getCrop() {
+        return crop;
+    }
+
+    public void setCrop(Crop crop) {
+        this.crop = crop;
     }
 }

@@ -19,9 +19,6 @@ public class TimeSlot implements Serializable {
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    @Column(name = "amount_of_water")
-    private Integer amountOfWater;
-
     @Column(name = "status")
     private String status;
 
@@ -56,14 +53,6 @@ public class TimeSlot implements Serializable {
         this.endTime = endTime;
     }
 
-    public Integer getAmountOfWater() {
-        return amountOfWater;
-    }
-
-    public void setAmountOfWater(Integer amountOfWater) {
-        this.amountOfWater = amountOfWater;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -78,5 +67,13 @@ public class TimeSlot implements Serializable {
 
     public void setPlot(Plot plot) {
         this.plot = plot;
+    }
+
+    public Integer getSensorRetries() {
+        return sensorRetries;
+    }
+
+    public void setSensorRetries(Integer sensorRetries) {
+        this.sensorRetries = sensorRetries;
     }
 }
