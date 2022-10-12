@@ -13,7 +13,6 @@ public interface PlotAPI {
 
     public ResponseBody<List<Plot>> getAllPlots();
 
-    public ResponseBody<Plot> editPlot(Plot plot);
+    public ResponseBody<Plot> editPlot(Integer id, Plot plot);
 
-    public ResponseBody<Plot> configurePlot(Plot plot);
 }
