@@ -3,16 +3,14 @@ package com.farm.irregation.utils;
 public class SystemCodes {
     public static enum StatusMessages {
 
-        // 200s status messages
+        // success status messages
         OK("INFO_200_001", "Success Operation"),
         CREATED("INFO_200_002", "Data added successfully"),
         UPDATED("INFO_200_003", "Data updated successfully"),
-        DELETED("INFO_200_004", "Data deleted successfully"),
         RECEIVED("INFO_200_005", "Data received successfully"),
 
-        // 500s status messages
-        GENERAL_ERROR("ERROR_500_001", "General Error: "),
-        DATABASE_ERROR("ERROR_500_002", "Database Error: ");
+        //500 error status messages
+        GENERAL_ERROR("ERROR_500_001", "General Error: ");
 
         private String code, description;
 
