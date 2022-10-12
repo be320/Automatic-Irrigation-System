@@ -1,7 +1,7 @@
 package com.farm.irregation.service;
 
 import com.farm.irregation.dto.ResponseBody;
-import com.farm.irregation.entity.Plot;
+import com.farm.irregation.model.Plot;
 import com.farm.irregation.repository.PlotRepository;
 import com.farm.irregation.utils.SystemCodes;
 import org.springframework.beans.factory.annotation.Autowired;

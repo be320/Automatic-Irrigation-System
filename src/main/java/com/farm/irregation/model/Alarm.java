@@ -1,4 +1,4 @@
-package com.farm.irregation.entity;
+package com.farm.irregation.model;
 
 public class Alarm {
 

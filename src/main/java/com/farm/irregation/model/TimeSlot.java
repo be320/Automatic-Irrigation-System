@@ -1,11 +1,12 @@
-package com.farm.irregation.entity;
+package com.farm.irregation.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Table(name="time_slot")
 @Entity
-public class TimeSlot {
+public class TimeSlot implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

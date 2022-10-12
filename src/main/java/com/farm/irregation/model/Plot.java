@@ -1,11 +1,12 @@
-package com.farm.irregation.entity;
+package com.farm.irregation.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Table(name="plot")
 @Entity
-public class Plot {
+public class Plot implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
