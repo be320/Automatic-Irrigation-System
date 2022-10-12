@@ -16,8 +16,11 @@ public class Crop implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "amount_of_water_per_meter_square")
-    private Integer amountOfWaterPerMeterSquare;
+    @Column(name = "rate_of_irrigation")
+    private Integer rateOfIrrigation; //number of minutes between each irrigation
+
+    @Column(name = "amount_of_water")
+    private Integer amountOfWater; //amount of water in liters needed per meter square
 
     public Integer getCropId() {
         return cropId;
@@ -35,11 +38,19 @@ public class Crop implements Serializable {
         this.name = name;
     }
 
-    public Integer getAmountOfWaterPerMeterSquare() {
-        return amountOfWaterPerMeterSquare;
+    public Integer getRateOfIrrigation() {
+        return rateOfIrrigation;
     }
 
-    public void setAmountOfWaterPerMeterSquare(Integer amountOfWaterPerMeterSquare) {
-        this.amountOfWaterPerMeterSquare = amountOfWaterPerMeterSquare;
+    public void setRateOfIrrigation(Integer rateOfIrrigation) {
+        this.rateOfIrrigation = rateOfIrrigation;
+    }
+
+    public Integer getAmountOfWater() {
+        return amountOfWater;
+    }
+
+    public void setAmountOfWater(Integer amountOfWater) {
+        this.amountOfWater = amountOfWater;
     }
 }

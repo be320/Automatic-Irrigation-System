@@ -55,8 +55,8 @@ public class CropService {
         ResponseBody<Crop> responseBody = new ResponseBody<>();
         try{
             Crop existingCrop = cropRepository.findById(crop.getCropId()).get();
-            if(crop.getAmountOfWaterPerMeterSquare() != null)
-                existingCrop.setAmountOfWaterPerMeterSquare(crop.getAmountOfWaterPerMeterSquare());
+            if(crop.getAmountOfWater() != null)
+                existingCrop.setAmountOfWater(crop.getAmountOfWater());
             if(crop.getName() != null)
                 existingCrop.setName(crop.getName());
             Crop updatedCrop = cropRepository.save(existingCrop);

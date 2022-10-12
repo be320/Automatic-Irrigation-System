@@ -13,6 +13,9 @@ public class Plot implements Serializable {
     @Column(name = "plot_id")
     private Integer plotId;
 
+    @Column(name="name")
+    private String name;
+
     @Column(name="top_left_longitude")
     private Double topLeftLongitude;
 
@@ -20,7 +23,7 @@ public class Plot implements Serializable {
     private Double topLeftLatitude;
 
     @Column(name="area")
-    private Double area;
+    private Integer area;
 
     @OneToMany(mappedBy = "plot", fetch = FetchType.LAZY)
     private List<TimeSlot> timeSlots;
@@ -53,11 +56,11 @@ public class Plot implements Serializable {
         this.topLeftLatitude = topLeftLatitude;
     }
 
-    public Double getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(Double area) {
+    public void setArea(Integer area) {
         this.area = area;
     }
 
@@ -75,5 +78,13 @@ public class Plot implements Serializable {
 
     public void setCrop(Crop crop) {
         this.crop = crop;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

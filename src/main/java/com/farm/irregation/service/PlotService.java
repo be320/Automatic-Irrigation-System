@@ -77,6 +77,8 @@ public class PlotService {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try{
             Plot existingPlot = plotRepository.findById(plot.getPlotId()).get();
+            if(plot.getName() != null)
+                existingPlot.setName(plot.getName());
             if(plot.getArea() != null)
                 existingPlot.setArea(plot.getArea());
             if(plot.getTopLeftLatitude() != null)

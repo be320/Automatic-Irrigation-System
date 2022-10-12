@@ -14,20 +14,26 @@ public class TimeSlot implements Serializable {
     private Integer timeSlotId;
 
     @Column(name = "start_time")
-    private LocalDateTime startTime;
+    private String startTime;
 
     @Column(name = "end_time")
-    private LocalDateTime endTime;
+    private String endTime;
+
+    @Column(name = "duration")
+    private Integer duration; //duration in minutes
+
+    @Column(name = "total_water_consumed")
+    private Integer totalWaterConsumed;
 
     @Column(name = "status")
     private String status;
 
+    @Column(name = "sensor_retries")
+    private Integer sensorRetries;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plot_id")
     private Plot plot;
-
-    @Column(name = "sensor_retries")
-    private Integer sensorRetries;
 
     public Integer getTimeSlotId() {
         return timeSlotId;
@@ -37,20 +43,36 @@ public class TimeSlot implements Serializable {
         this.timeSlotId = timeSlotId;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public Integer getTotalWaterConsumed() {
+        return totalWaterConsumed;
+    }
+
+    public void setTotalWaterConsumed(Integer totalWaterConsumed) {
+        this.totalWaterConsumed = totalWaterConsumed;
     }
 
     public String getStatus() {
