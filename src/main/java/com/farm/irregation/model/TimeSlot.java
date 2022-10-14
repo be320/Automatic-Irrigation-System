@@ -14,16 +14,25 @@ public class TimeSlot implements Serializable {
     private Integer timeSlotId;
 
     @Column(name = "start_date")
-    private String startDate;
+    private String startDate; // "2022-04-21"
 
     @Column(name = "end_date")
-    private String endDate;
+    private String endDate; // "2022-04-25"
 
     @Column(name = "irrigation_water_amount")
     private Integer irrigationWaterAmount; //amount of water per irregation
 
     @Column(name = "irrigations_per_day")
     private Integer irrigationsPerDay; //number of irrigations per day
+
+    @Column(name = "irrigation_duration")
+    private Integer irrigationDuration; //irrigation duration =  amount of water (Litres) / irrigation speed (Litres/min)
+
+    @Column(name = "irrigation_days")
+    private Integer irrigationDays; // number of irrigation days = endDate - startDate
+
+    @Column(name = "irrigation_rate")
+    private Integer irrigationRate; // minutes between start of each irrigation
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plot_id")
@@ -67,6 +76,30 @@ public class TimeSlot implements Serializable {
 
     public void setIrrigationsPerDay(Integer irrigationsPerDay) {
         this.irrigationsPerDay = irrigationsPerDay;
+    }
+
+    public Integer getIrrigationDuration() {
+        return irrigationDuration;
+    }
+
+    public void setIrrigationDuration(Integer irrigationDuration) {
+        this.irrigationDuration = irrigationDuration;
+    }
+
+    public Integer getIrrigationDays() {
+        return irrigationDays;
+    }
+
+    public void setIrrigationDays(Integer irrigationDays) {
+        this.irrigationDays = irrigationDays;
+    }
+
+    public Integer getIrrigationRate() {
+        return irrigationRate;
+    }
+
+    public void setIrrigationRate(Integer irrigationRate) {
+        this.irrigationRate = irrigationRate;
     }
 
     public Plot getPlot() {

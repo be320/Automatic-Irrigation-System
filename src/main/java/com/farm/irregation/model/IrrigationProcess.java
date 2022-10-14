@@ -9,8 +9,8 @@ public class IrrigationProcess implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "time_slot_id")
-    private Integer timeSlotId;
+    @Column(name = "irrigation_process_id")
+    private Integer irrigationProcessId;
 
     @Column(name = "start_time")
     private String startTime;
@@ -31,12 +31,12 @@ public class IrrigationProcess implements Serializable {
     @JoinColumn(name = "time_slot_id")
     private TimeSlot timeSlot;
 
-    public Integer getTimeSlotId() {
-        return timeSlotId;
+    public Integer getIrrigationProcessId() {
+        return irrigationProcessId;
     }
 
-    public void setTimeSlotId(Integer timeSlotId) {
-        this.timeSlotId = timeSlotId;
+    public void setIrrigationProcessId(Integer irrigationProcessId) {
+        this.irrigationProcessId = irrigationProcessId;
     }
 
     public String getStartTime() {

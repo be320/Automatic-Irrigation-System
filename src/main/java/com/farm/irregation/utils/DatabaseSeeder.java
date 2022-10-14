@@ -36,45 +36,45 @@ public class DatabaseSeeder implements CommandLineRunner {
 //            failureTestCase();
     }
 
-    private List<Crop> addCropsAndPlots(){
-        List<Crop> addedCrops = new ArrayList<>();
-        Crop tomato = new Crop();
-        Crop onion = new Crop();
-        Crop potato = new Crop();
-
-        tomato.setName("Tomato");
-        tomato.setAmountOfWater(45);
-        addedCrops.add(tomato);
-
-        onion.setName("Onion");
-        tomato.setAmountOfWater(30);
-        addedCrops.add(onion);
-
-        potato.setName("Potato");
-        potato.setAmountOfWater(60);
-        addedCrops.add(potato);
-
-        cropRepository.saveAll(addedCrops);
-        return addedCrops;
-    }
-
-    private void addPlots(){
-        Plot greenLand = new Plot();
-        Plot whiteLand = new Plot();
-        Plot brownLand = new Plot();
-        Plot purpleLand = new Plot();
-        Plot yellowLand = new Plot();
-        Plot redLand = new Plot();
-
-//        greenLand.setName();
-//        greenLand.setName();
-    }
-
-    private void successTestCase(){
-
-    }
-
-    private void failureTestCase(){
-
-    }
+//    private List<Crop> addCropsAndPlots(){
+//        List<Crop> addedCrops = new ArrayList<>();
+//        Crop tomato = new Crop();
+//        Crop onion = new Crop();
+//        Crop potato = new Crop();
+//
+//        tomato.setName("Tomato");
+//        tomato.setAmountOfWater(45);
+//        addedCrops.add(tomato);
+//
+//        onion.setName("Onion");
+//        tomato.setAmountOfWater(30);
+//        addedCrops.add(onion);
+//
+//        potato.setName("Potato");
+//        potato.setAmountOfWater(60);
+//        addedCrops.add(potato);
+//
+//        cropRepository.saveAll(addedCrops);
+//        return addedCrops;
+//    }
+//
+//    private void addPlots(){
+//        Plot greenLand = new Plot();
+//        Plot whiteLand = new Plot();
+//        Plot brownLand = new Plot();
+//        Plot purpleLand = new Plot();
+//        Plot yellowLand = new Plot();
+//        Plot redLand = new Plot();
+//
+////        greenLand.setName();
+////        greenLand.setName();
+//    }
+//
+//    private void successTestCase(){
+//
+//    }
+//
+//    private void failureTestCase(){
+//
+//    }
 }

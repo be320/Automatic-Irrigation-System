@@ -18,11 +18,11 @@ public class CropService {
     private CropRepository cropRepository;
 
     @Transactional
-    public ResponseBody<Crop> addCrop(CropDTO crop) {
+    public ResponseBody<Crop> addCrop(CropDTO cropDTO) {
         ResponseBody<Crop> responseBody = new ResponseBody<>();
         try{
             Crop addedCrop = new Crop();
-            addedCrop.setName(crop.getName());
+            addedCrop.setName(cropDTO.getName());
             addedCrop = cropRepository.save(addedCrop);
             responseBody.setBody(addedCrop);
             responseBody.setCode(SystemCodes.StatusMessages.CREATED.getCode());
@@ -54,12 +54,12 @@ public class CropService {
     }
 
     @Transactional
-    public ResponseBody<Crop> editCrop(Integer id, CropDTO crop) {
+    public ResponseBody<Crop> editCrop(Integer id, CropDTO cropDTO) {
         ResponseBody<Crop> responseBody = new ResponseBody<>();
         try{
             Crop existingCrop = cropRepository.findById(id).get();
-            if(crop.getName() != null)
-                existingCrop.setName(crop.getName());
+            if(cropDTO.getName() != null)
+                existingCrop.setName(cropDTO.getName());
             Crop updatedCrop = cropRepository.save(existingCrop);
             responseBody.setBody(updatedCrop);
             responseBody.setCode(SystemCodes.StatusMessages.UPDATED.getCode());
