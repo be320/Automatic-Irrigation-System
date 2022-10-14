@@ -1,4 +1,4 @@
-package com.farm.irregation.dto;
+package com.farm.irregation.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

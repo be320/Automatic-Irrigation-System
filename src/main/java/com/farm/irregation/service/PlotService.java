@@ -1,6 +1,6 @@
 package com.farm.irregation.service;
 
-import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
 import com.farm.irregation.repository.CropRepository;

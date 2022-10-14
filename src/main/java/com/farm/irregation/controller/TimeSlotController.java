@@ -1,7 +1,7 @@
 package com.farm.irregation.controller;
 
 import com.farm.irregation.api.TimeSlotAPI;
-import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.TimeSlot;
 import com.farm.irregation.service.TimeSlotService;
 import org.springframework.beans.factory.annotation.Autowired;

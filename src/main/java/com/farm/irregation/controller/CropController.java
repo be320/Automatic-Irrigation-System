@@ -1,7 +1,7 @@
 package com.farm.irregation.controller;
 
 import com.farm.irregation.api.CropAPI;
-import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Crop;
 import org.springframework.web.bind.annotation.RestController;
 

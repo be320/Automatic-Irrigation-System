@@ -1,8 +1,6 @@
 package com.farm.irregation.service;
 
-import com.farm.irregation.dto.ResponseBody;
-import com.farm.irregation.model.TimeSlot;
-import com.farm.irregation.model.TimeSlot;
+import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.TimeSlot;
 import com.farm.irregation.repository.TimeSlotRepository;
 import com.farm.irregation.utils.SystemCodes;

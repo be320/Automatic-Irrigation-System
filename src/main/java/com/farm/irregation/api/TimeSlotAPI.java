@@ -1,6 +1,6 @@
 package com.farm.irregation.api;
 
-import com.farm.irregation.dto.ResponseBody;
+import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.TimeSlot;
 import org.springframework.web.bind.annotation.*;
 
