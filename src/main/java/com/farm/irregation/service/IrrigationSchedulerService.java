@@ -35,6 +35,7 @@ public class IrrigationSchedulerService {
 
     private Sensor sensor = Sensor.getInstance();
 
+
     @Scheduled(fixedRate = StaticData.SENSOR_IRREGATION_CHECK_RATE)
     public void manageIrrigationProcess(){
         try {
@@ -55,7 +56,8 @@ public class IrrigationSchedulerService {
         }
     }
 
-    @Scheduled(fixedRate = StaticData.DAILY_SCHEDULE_TIME_SLOTS)
+    //This schedule will run daily at 12 am with egypt time zone
+    @Scheduled(cron = "0 0 0 * * *",zone = "GMT+2")
     public void addDailyTimeSlotsForPlots(){
         try {
             LocalDateTime timeNow = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);

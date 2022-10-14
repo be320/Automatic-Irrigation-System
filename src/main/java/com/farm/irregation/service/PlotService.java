@@ -73,10 +73,10 @@ public class PlotService {
     }
 
     @Transactional
-    public ResponseBody<Plot> editPlot(Plot plot) {
+    public ResponseBody<Plot> editPlot(Integer id, Plot plot) {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try{
-            Plot existingPlot = plotRepository.findById(plot.getPlotId()).get();
+            Plot existingPlot = plotRepository.findById(id).get();
             if(plot.getName() != null)
                 existingPlot.setName(plot.getName());
             if(plot.getArea() != null)

@@ -18,6 +18,9 @@ public class IrrigationProcess implements Serializable {
     @Column(name = "end_time")
     private String endTime;
 
+    @Column(name = "duration")
+    private Integer duration;
+
     @Column(name = "status")
     private String status;
 
@@ -74,5 +77,13 @@ public class IrrigationProcess implements Serializable {
 
     public void setTimeSlot(TimeSlot timeSlot) {
         this.timeSlot = timeSlot;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 }

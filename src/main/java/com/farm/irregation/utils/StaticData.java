@@ -4,7 +4,6 @@ public class StaticData {
 
     //Schedule Rates
     public static final int SENSOR_IRREGATION_CHECK_RATE = 60*1000; // 1 minute
-    public static final int DAILY_SCHEDULE_TIME_SLOTS = 24*60*60*1000; // 24 hours
     public static final int MINUTES_NUMBER_IN_DAY = 24*60; // 1440 minutes
     public static final int IRRIGATION_SPEED = 5; // 5 Litres/minute
     public static final int MAX_SENSOR_RETRIES = 3;

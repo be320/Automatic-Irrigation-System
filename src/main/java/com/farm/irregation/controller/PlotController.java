@@ -32,8 +32,7 @@ public class PlotController implements PlotAPI {
 
     @Override
     public ResponseBody<Plot> editPlot(Integer id, Plot plot) {
-        plot.setPlotId(id);
-        return plotService.editPlot(plot);
+        return plotService.editPlot(id, plot);
     }
 
     @Override

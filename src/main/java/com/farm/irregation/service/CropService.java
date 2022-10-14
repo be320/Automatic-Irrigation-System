@@ -1,5 +1,6 @@
 package com.farm.irregation.service;
 
+import com.farm.irregation.dto.request.crop.CropDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Crop;
 import com.farm.irregation.repository.CropRepository;
@@ -17,10 +18,12 @@ public class CropService {
     private CropRepository cropRepository;
 
     @Transactional
-    public ResponseBody<Crop> addCrop(Crop crop) {
+    public ResponseBody<Crop> addCrop(CropDTO crop) {
         ResponseBody<Crop> responseBody = new ResponseBody<>();
         try{
-            Crop addedCrop = cropRepository.save(crop);
+            Crop addedCrop = new Crop();
+            addedCrop.setName(crop.getName());
+            addedCrop = cropRepository.save(addedCrop);
             responseBody.setBody(addedCrop);
             responseBody.setCode(SystemCodes.StatusMessages.CREATED.getCode());
             responseBody.setDescription(SystemCodes.StatusMessages.CREATED.getDescription());
@@ -51,12 +54,10 @@ public class CropService {
     }
 
     @Transactional
-    public ResponseBody<Crop> editCrop(Integer id, Crop crop) {
+    public ResponseBody<Crop> editCrop(Integer id, CropDTO crop) {
         ResponseBody<Crop> responseBody = new ResponseBody<>();
         try{
-            Crop existingCrop = cropRepository.findById(crop.getCropId()).get();
-            if(crop.getAmountOfWater() != null)
-                existingCrop.setAmountOfWater(crop.getAmountOfWater());
+            Crop existingCrop = cropRepository.findById(id).get();
             if(crop.getName() != null)
                 existingCrop.setName(crop.getName());
             Crop updatedCrop = cropRepository.save(existingCrop);
