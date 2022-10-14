@@ -1,8 +1,16 @@
 package com.farm.irregation.model;
 
-public class Alarm {
+import com.farm.irregation.utils.StaticData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public final class Alarm {
 
     private static Alarm alarmInstance;
+
+    private String status;
+
+    private static final Logger logger = LoggerFactory.getLogger(Alarm.class);
 
     private Alarm(){}
 
@@ -13,6 +21,12 @@ public class Alarm {
     }
 
     public void ringAlert(){
-        // Add alert message here
+        status = StaticData.RINGING;
+        logger.info("Alarm is "+status);
+    }
+
+    public void stopAlert(){
+        status = StaticData.SILENT;
+        logger.info("Alarm is "+status);
     }
 }

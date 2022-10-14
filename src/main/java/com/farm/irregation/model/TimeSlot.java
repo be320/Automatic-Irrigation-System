@@ -13,23 +13,17 @@ public class TimeSlot implements Serializable {
     @Column(name = "time_slot_id")
     private Integer timeSlotId;
 
-    @Column(name = "start_time")
-    private String startTime;
+    @Column(name = "start_date")
+    private String startDate;
 
-    @Column(name = "end_time")
-    private String endTime;
+    @Column(name = "end_date")
+    private String endDate;
 
-    @Column(name = "duration")
-    private Integer duration; //duration in minutes
+    @Column(name = "irrigation_water_amount")
+    private Integer irrigationWaterAmount; //amount of water per irregation
 
-    @Column(name = "total_water_consumed")
-    private Integer totalWaterConsumed;
-
-    @Column(name = "status")
-    private String status;
-
-    @Column(name = "sensor_retries")
-    private Integer sensorRetries;
+    @Column(name = "irrigations_per_day")
+    private Integer irrigationsPerDay; //number of irrigations per day
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "plot_id")
@@ -43,44 +37,36 @@ public class TimeSlot implements Serializable {
         this.timeSlotId = timeSlotId;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public Integer getDuration() {
-        return duration;
+    public Integer getIrrigationWaterAmount() {
+        return irrigationWaterAmount;
     }
 
-    public void setDuration(Integer duration) {
-        this.duration = duration;
+    public void setIrrigationWaterAmount(Integer irrigationWaterAmount) {
+        this.irrigationWaterAmount = irrigationWaterAmount;
     }
 
-    public Integer getTotalWaterConsumed() {
-        return totalWaterConsumed;
+    public Integer getIrrigationsPerDay() {
+        return irrigationsPerDay;
     }
 
-    public void setTotalWaterConsumed(Integer totalWaterConsumed) {
-        this.totalWaterConsumed = totalWaterConsumed;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setIrrigationsPerDay(Integer irrigationsPerDay) {
+        this.irrigationsPerDay = irrigationsPerDay;
     }
 
     public Plot getPlot() {
@@ -89,13 +75,5 @@ public class TimeSlot implements Serializable {
 
     public void setPlot(Plot plot) {
         this.plot = plot;
-    }
-
-    public Integer getSensorRetries() {
-        return sensorRetries;
-    }
-
-    public void setSensorRetries(Integer sensorRetries) {
-        this.sensorRetries = sensorRetries;
     }
 }
