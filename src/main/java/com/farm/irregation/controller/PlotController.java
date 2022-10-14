@@ -1,6 +1,9 @@
 package com.farm.irregation.controller;
 
 import com.farm.irregation.api.PlotAPI;
+import com.farm.irregation.dto.request.plot.AddPlotDTO;
+import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
+import com.farm.irregation.dto.request.plot.EditPlotDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Plot;
 import com.farm.irregation.service.PlotService;
@@ -16,7 +19,7 @@ public class PlotController implements PlotAPI {
     PlotService plotService;
 
     @Override
-    public ResponseBody<Plot> addPlot(Plot plot) {
+    public ResponseBody<Plot> addPlot(AddPlotDTO plot) {
         return plotService.addPlot(plot);
     }
 
@@ -31,13 +34,13 @@ public class PlotController implements PlotAPI {
     }
 
     @Override
-    public ResponseBody<Plot> editPlot(Integer id, Plot plot) {
+    public ResponseBody<Plot> editPlot(Integer id, EditPlotDTO plot) {
         return plotService.editPlot(id, plot);
     }
 
     @Override
-    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId) {
-        return plotService.configurePlot(plotId, cropId);
+    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
+        return plotService.configurePlot(plotId, cropId, configurePlotDTO);
     }
 
 }

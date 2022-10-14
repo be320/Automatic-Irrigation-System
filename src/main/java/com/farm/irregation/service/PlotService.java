@@ -1,5 +1,8 @@
 package com.farm.irregation.service;
 
+import com.farm.irregation.dto.request.plot.AddPlotDTO;
+import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
+import com.farm.irregation.dto.request.plot.EditPlotDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
@@ -23,7 +26,7 @@ public class PlotService {
     CropRepository cropRepository;
 
     @Transactional
-    public ResponseBody<Plot> addPlot(Plot plot) {
+    public ResponseBody<Plot> addPlot(AddPlotDTO plot) {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try {
             Plot addedPlot = plotRepository.save(plot);
@@ -73,7 +76,7 @@ public class PlotService {
     }
 
     @Transactional
-    public ResponseBody<Plot> editPlot(Integer id, Plot plot) {
+    public ResponseBody<Plot> editPlot(Integer id, EditPlotDTO plot) {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try{
             Plot existingPlot = plotRepository.findById(id).get();
@@ -100,7 +103,7 @@ public class PlotService {
     }
 
     @Transactional
-    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId) {
+    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
         ResponseBody<Plot> responseBody = new ResponseBody<>();
         try{
             Plot plot = plotRepository.findById(plotId).get();
