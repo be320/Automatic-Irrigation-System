@@ -9,7 +9,7 @@ import java.util.Set;
 public class Crop implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "crop_id")
     private Integer cropId;
 

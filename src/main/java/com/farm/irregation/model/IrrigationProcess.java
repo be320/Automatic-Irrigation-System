@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class IrrigationProcess implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "irrigation_process_id")
     private Integer irrigationProcessId;
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class TimeSlot implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "time_slot_id")
     private Integer timeSlotId;
 

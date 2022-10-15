@@ -9,7 +9,7 @@ import java.util.List;
 public class Plot implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "plot_id")
     private Integer plotId;
 
