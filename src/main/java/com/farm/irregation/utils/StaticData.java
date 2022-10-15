@@ -17,4 +17,8 @@ public class StaticData {
     //Alarm States
     public static final String RINGING = "Ringing !!";
     public static final String SILENT = "Silent";
+
+    //Sensor States
+    public static final String AVAILABLE = "Available";
+    public static final String NOT_AVAILABLE = "Not Available";
 }

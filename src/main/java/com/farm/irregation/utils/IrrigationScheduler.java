@@ -2,7 +2,6 @@ package com.farm.irregation.utils;
 
 import com.farm.irregation.model.IrrigationProcess;
 import com.farm.irregation.model.Sensor;
-import com.farm.irregation.model.TimeSlot;
 import com.farm.irregation.repository.IrrigationProcessRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +32,13 @@ public class IrrigationScheduler {
             List<IrrigationProcess> slotsToStartIrrigationNow = irrigationProcessRepository.findSlotsToStartIrrigationNow(timeNow);
             List<IrrigationProcess> slotsToEndIrrigationNow = irrigationProcessRepository.findSlotsToEndIrrigationNow(timeNow);
             for (IrrigationProcess slot : slotsToStartIrrigationNow) {
-                sensor.startIrrigationRequest(slot);
+                if(sensor.getStatus().equals(StaticData.AVAILABLE))
+                    sensor.startIrrigationRequest(slot);
+                else{
+                    while(slot.getSensorRetries() <= StaticData.MAX_SENSOR_RETRIES){
+                    sensor.retryConnection(slot);
+                    }
+                }
                 irrigationProcessRepository.save(slot);
             }
             for (IrrigationProcess slot : slotsToEndIrrigationNow) {

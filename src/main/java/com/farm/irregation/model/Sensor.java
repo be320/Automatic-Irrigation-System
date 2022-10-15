@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public final class Sensor {
 
-    private String status;
+    private String status = StaticData.AVAILABLE;
     private static Sensor sensorInstance;
     private static final Logger logger = LoggerFactory.getLogger(Sensor.class);
 
@@ -29,8 +29,8 @@ public final class Sensor {
         logger.info("Sensor finished irrigation process: " + irrigationProcess);
     }
 
-    public void rejectIrrigationRequest(IrrigationProcess irrigationProcess){
-        if(irrigationProcess.getSensorRetries() > StaticData.MAX_SENSOR_RETRIES){
+    public void retryConnection(IrrigationProcess irrigationProcess){
+        if(irrigationProcess.getSensorRetries() == StaticData.MAX_SENSOR_RETRIES){
             irrigationProcess.setStatus(StaticData.REJECTED);
             logger.info("Sensor rejected irrigation process: " + irrigationProcess);
         }
@@ -40,4 +40,11 @@ public final class Sensor {
         }
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
