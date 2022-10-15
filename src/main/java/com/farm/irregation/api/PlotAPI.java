@@ -3,10 +3,8 @@ package com.farm.irregation.api;
 import com.farm.irregation.dto.request.plot.AddPlotDTO;
 import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
 import com.farm.irregation.dto.request.plot.EditPlotDTO;
-import com.farm.irregation.dto.response.ConfigurePlotResponseDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Plot;
-import com.farm.irregation.model.TimeSlot;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +25,6 @@ public interface PlotAPI {
     public ResponseBody<Plot> editPlot(@PathVariable("id") Integer id, @RequestBody EditPlotDTO plot);
 
     @PutMapping("/{plotId}/crop/{cropId}")
-    public ResponseBody<ConfigurePlotResponseDTO> configurePlot(@PathVariable("plotId") Integer plotId, @PathVariable("cropId") Integer cropId, @RequestBody ConfigurePlotDTO configurePlotDTO);
+    public ResponseBody<Plot> configurePlot(@PathVariable("plotId") Integer plotId, @PathVariable("cropId") Integer cropId, @RequestBody ConfigurePlotDTO configurePlotDTO);
 
 }

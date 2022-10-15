@@ -1,5 +1,8 @@
 package com.farm.irregation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -27,8 +30,9 @@ public class IrrigationProcess implements Serializable {
     @Column(name = "sensor_retries")
     private Integer sensorRetries;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "time_slot_id")
+    @JsonIgnore
     private TimeSlot timeSlot;
 
     public Integer getIrrigationProcessId() {
@@ -85,5 +89,17 @@ public class IrrigationProcess implements Serializable {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "IrrigationProcess{" +
+                "irrigationProcessId=" + irrigationProcessId +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", duration=" + duration +
+                ", status='" + status + '\'' +
+                ", sensorRetries=" + sensorRetries +
+                '}';
     }
 }

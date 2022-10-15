@@ -4,10 +4,8 @@ import com.farm.irregation.api.PlotAPI;
 import com.farm.irregation.dto.request.plot.AddPlotDTO;
 import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
 import com.farm.irregation.dto.request.plot.EditPlotDTO;
-import com.farm.irregation.dto.response.ConfigurePlotResponseDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.Plot;
-import com.farm.irregation.model.TimeSlot;
 import com.farm.irregation.service.PlotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +39,7 @@ public class PlotController implements PlotAPI {
     }
 
     @Override
-    public ResponseBody<ConfigurePlotResponseDTO> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
+    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
         return plotService.configurePlot(plotId, cropId, configurePlotDTO);
     }
 

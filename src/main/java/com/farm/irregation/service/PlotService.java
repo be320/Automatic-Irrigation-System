@@ -3,7 +3,6 @@ package com.farm.irregation.service;
 import com.farm.irregation.dto.request.plot.AddPlotDTO;
 import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
 import com.farm.irregation.dto.request.plot.EditPlotDTO;
-import com.farm.irregation.dto.response.ConfigurePlotResponseDTO;
 import com.farm.irregation.dto.response.ResponseBody;
 import com.farm.irregation.model.*;
 import com.farm.irregation.repository.CropRepository;
@@ -121,9 +120,8 @@ public class PlotService {
     }
 
     @Transactional
-    public ResponseBody<ConfigurePlotResponseDTO> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
-        ResponseBody<ConfigurePlotResponseDTO> responseBody = new ResponseBody<>();
-        ConfigurePlotResponseDTO configurePlotResponseDTO = new ConfigurePlotResponseDTO();
+    public ResponseBody<Plot> configurePlot(Integer plotId, Integer cropId, ConfigurePlotDTO configurePlotDTO) {
+        ResponseBody<Plot> responseBody = new ResponseBody<>();
         List<IrrigationProcess> irrigationProcesses = new ArrayList<>();
         try{
             Plot plot = plotRepository.findById(plotId).get();
@@ -156,19 +154,14 @@ public class PlotService {
                 irrigationProcess.setSensorRetries(0);
                 irrigationProcess.setStatus(StaticData.SCHEDULED_SLOT);
                 LocalDateTime irrigationStartTime = startTime.plusMinutes(i*timeSlot.getIrrigationRate());
-                LocalDateTime irrigationEndTime = startTime.plusMinutes(timeSlot.getIrrigationDuration());
+                LocalDateTime irrigationEndTime = irrigationStartTime.plusMinutes(timeSlot.getIrrigationDuration());
                 irrigationProcess.setStartTime(irrigationStartTime.truncatedTo(ChronoUnit.MINUTES).toString());
                 irrigationProcess.setEndTime(irrigationEndTime.truncatedTo(ChronoUnit.MINUTES).toString());
                 irrigationProcesses.add(irrigationProcess);
             }
+            timeSlot.setIrrigationProcesses(irrigationProcesses);
             irrigationProcessRepository.saveAll(irrigationProcesses);
-
-            configurePlotResponseDTO.setPlot(plot);
-            configurePlotResponseDTO.setTimeSlot(timeSlot);
-            configurePlotResponseDTO.setCrop(crop);
-            configurePlotResponseDTO.setIrrigationProcesses(irrigationProcesses);
-
-            responseBody.setBody(configurePlotResponseDTO);
+            responseBody.setBody(plot);
             responseBody.setCode(SystemCodes.StatusMessages.UPDATED.getCode());
             responseBody.setDescription(SystemCodes.StatusMessages.UPDATED.getDescription());
             return responseBody;

@@ -1,8 +1,12 @@
 package com.farm.irregation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name="time_slot")
 @Entity
@@ -34,9 +38,13 @@ public class TimeSlot implements Serializable {
     @Column(name = "irrigation_rate")
     private Integer irrigationRate; // minutes between start of each irrigation
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "plot_id")
+    @JsonIgnore
     private Plot plot;
+
+    @OneToMany(mappedBy = "timeSlot", fetch = FetchType.EAGER)
+    private List<IrrigationProcess> irrigationProcesses;
 
     public Integer getTimeSlotId() {
         return timeSlotId;
@@ -108,5 +116,13 @@ public class TimeSlot implements Serializable {
 
     public void setPlot(Plot plot) {
         this.plot = plot;
+    }
+
+    public List<IrrigationProcess> getIrrigationProcesses() {
+        return irrigationProcesses;
+    }
+
+    public void setIrrigationProcesses(List<IrrigationProcess> irrigationProcesses) {
+        this.irrigationProcesses = irrigationProcesses;
     }
 }
