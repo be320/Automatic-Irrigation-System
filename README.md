@@ -19,9 +19,11 @@ This Automatic Irrigation System provides APIs to help the user:
 * MySQL
 
 ## Steps to run the project
-* run > mvn clean install
+* Run > mvn clean install
 * Change Datasource settings in the application.properties to yours
-* run the sql commands in the file: src/main/resources/static/SqlStatements.sql
+* Run the sql commands in the file: src/main/resources/static/SqlStatements.sql
+* Run the project
+* Use the postman collection to call the system APIs, the collection is here: src/main/resources/static/Irrigation-System.postman_collection.json
 
 ## Database Design
 ![Alt text](./src/main/resources/static/db_design.PNG?raw=true "Title")
