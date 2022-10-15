@@ -35,9 +35,11 @@ public class IrrigationScheduler {
                 if(sensor.getStatus().equals(StaticData.AVAILABLE))
                     sensor.startIrrigationRequest(slot);
                 else{
-                    while(slot.getSensorRetries() <= StaticData.MAX_SENSOR_RETRIES){
+                    while(slot.getSensorRetries() < StaticData.MAX_SENSOR_RETRIES){
                     sensor.retryConnection(slot);
                     }
+                    slot.setStatus(StaticData.REJECTED);
+                    logger.info("Sensor rejected irrigation process: " + slot);
                 }
                 irrigationProcessRepository.save(slot);
             }

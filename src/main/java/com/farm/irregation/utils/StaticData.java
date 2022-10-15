@@ -21,4 +21,8 @@ public class StaticData {
     //Sensor States
     public static final String AVAILABLE = "Available";
     public static final String NOT_AVAILABLE = "Not Available";
+
+    //Test Cases
+    public static final String FIRST_TEST_CASE = "firstTestCase";
+    public static final String SECOND_TEST_CASE = "secondTestCase";
 }

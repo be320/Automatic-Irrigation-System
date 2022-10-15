@@ -21,12 +21,13 @@ This Automatic Irrigation System provides APIs to help the user:
 ## Steps to run the project
 * Run > mvn clean install
 * Change Datasource settings in the application.properties to yours
-* Run the sql commands in the file: src/main/resources/static/SqlStatements.sql
-* Run the project
+* Create The Database Schema by: CREATE SCHEMA `irrigation_system` ;
+* Choose the test case you want to run in "src/main/java/com/farm/irregation/utils/DatabaseSeeder.java"
+* Run the project and it will create the database tables for you
 * Use the postman collection to call the system APIs, the collection is here: src/main/resources/static/Irrigation-System.postman_collection.json
 
 ## Database Design
-![Alt text](./src/main/resources/static/db_design.PNG?raw=true "Title")
+![Alt text](./src/main/resources/static/db_design.PNG?raw=true "Database Design")
 
 ## Design Assumptions
 * Sensor is a Singleton Class
@@ -35,7 +36,7 @@ This Automatic Irrigation System provides APIs to help the user:
 * Plot can be configured with many time slots
 * Each Time Slot has list of scheduled Irrigation Processes
 
-## UseCase Scenario
+## User Scenario
 1. User creates new crop (tomato)
 2. User adds new plot (GreenLand)
 3. User configures the plot:
@@ -48,5 +49,6 @@ This Automatic Irrigation System provides APIs to help the user:
 7. If the sensor was not available the irrigation process do 3 retries in sensor communication, and then change the status to REJECTED
 
 ## Test Cases (Database Seeding) 
-    Test Case 1 (Success Scenario):
-        * 
+    * Test Case 1 (Success Scenario): Sensor is available
+    * Test Case 2 (Failure Scenario): Sensor is not available
+ 

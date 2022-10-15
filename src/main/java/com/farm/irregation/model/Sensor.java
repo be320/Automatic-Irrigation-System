@@ -30,14 +30,8 @@ public final class Sensor {
     }
 
     public void retryConnection(IrrigationProcess irrigationProcess){
-        if(irrigationProcess.getSensorRetries() == StaticData.MAX_SENSOR_RETRIES){
-            irrigationProcess.setStatus(StaticData.REJECTED);
-            logger.info("Sensor rejected irrigation process: " + irrigationProcess);
-        }
-        else{
-            irrigationProcess.setSensorRetries(irrigationProcess.getSensorRetries() + 1);
-            logger.info("Error in connecting with Sensor: Retries number ("+irrigationProcess.getSensorRetries()+") for irrigation process: " + irrigationProcess);
-        }
+        irrigationProcess.setSensorRetries(irrigationProcess.getSensorRetries() + 1);
+        logger.info("Error in connecting with Sensor: Retries number ("+irrigationProcess.getSensorRetries()+") for irrigation process: " + irrigationProcess);
     }
 
     public String getStatus() {

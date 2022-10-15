@@ -1,16 +1,17 @@
 package com.farm.irregation.utils;
 
+import com.farm.irregation.dto.request.plot.ConfigurePlotDTO;
 import com.farm.irregation.model.Crop;
 import com.farm.irregation.model.Plot;
+import com.farm.irregation.model.Sensor;
 import com.farm.irregation.repository.CropRepository;
 import com.farm.irregation.repository.PlotRepository;
-import com.farm.irregation.repository.TimeSlotRepository;
+import com.farm.irregation.service.PlotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
@@ -19,62 +20,57 @@ public class DatabaseSeeder implements CommandLineRunner {
     PlotRepository plotRepository;
 
     @Autowired
-    TimeSlotRepository timeSlotRepository;
-
-    @Autowired
     CropRepository cropRepository;
 
-    @Override
-    public void run(String... args) throws Exception {
+    @Autowired
+    PlotService plotService;
 
-        //change this flag to run success or failure test cases
-//        boolean runSuccessCase = true;
-//        addCropsAndPlots();
-//        if(runSuccessCase)
-//            successTestCase();
-//        else
-//            failureTestCase();
+    @Override
+    public void run(String... args) {
+        addCropAndPlot();
+        switch (StaticData.SECOND_TEST_CASE){
+            case StaticData.FIRST_TEST_CASE:
+                runFirstTestCase();
+                break;
+            case StaticData.SECOND_TEST_CASE:
+                runSecondTestCase();
+                break;
+            default:
+                break;
+        }
+        addTimeSlot();
     }
 
-//    private List<Crop> addCropsAndPlots(){
-//        List<Crop> addedCrops = new ArrayList<>();
-//        Crop tomato = new Crop();
-//        Crop onion = new Crop();
-//        Crop potato = new Crop();
-//
-//        tomato.setName("Tomato");
-//        tomato.setAmountOfWater(45);
-//        addedCrops.add(tomato);
-//
-//        onion.setName("Onion");
-//        tomato.setAmountOfWater(30);
-//        addedCrops.add(onion);
-//
-//        potato.setName("Potato");
-//        potato.setAmountOfWater(60);
-//        addedCrops.add(potato);
-//
-//        cropRepository.saveAll(addedCrops);
-//        return addedCrops;
-//    }
-//
-//    private void addPlots(){
-//        Plot greenLand = new Plot();
-//        Plot whiteLand = new Plot();
-//        Plot brownLand = new Plot();
-//        Plot purpleLand = new Plot();
-//        Plot yellowLand = new Plot();
-//        Plot redLand = new Plot();
-//
-////        greenLand.setName();
-////        greenLand.setName();
-//    }
-//
-//    private void successTestCase(){
-//
-//    }
-//
-//    private void failureTestCase(){
-//
-//    }
+    private void addCropAndPlot(){
+        Crop mango = new Crop();
+        mango.setName("Mango");
+        cropRepository.save(mango);
+        Plot greenLand = new Plot();
+        greenLand.setName("Green Land");
+        greenLand.setTopLeftLongitude(17.852);
+        greenLand.setTopLeftLatitude(24.289);
+        greenLand.setArea(52.5);
+        plotRepository.save(greenLand);
+    }
+
+    public void addTimeSlot(){
+        // By this setup There will be irrigation process every 5 minutes and the length of each process will be for 1 minute
+        ConfigurePlotDTO configurePlotDTO = new ConfigurePlotDTO();
+        configurePlotDTO.setStartDate(LocalDate.now().toString());
+        configurePlotDTO.setEndDate(LocalDate.now().toString());
+        configurePlotDTO.setIrrigationsPerDay(288);
+        configurePlotDTO.setIrrigationWaterAmount(5);
+        plotService.configurePlot(1, 1, configurePlotDTO);
+    }
+
+    private void runFirstTestCase(){
+        Sensor sensor = Sensor.getInstance();
+        sensor.setStatus(StaticData.AVAILABLE);
+    }
+
+    private void runSecondTestCase(){
+        Sensor sensor = Sensor.getInstance();
+        sensor.setStatus(StaticData.NOT_AVAILABLE);
+    }
+
 }
