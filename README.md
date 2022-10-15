@@ -19,8 +19,9 @@ This Automatic Irrigation System provides APIs to help the user:
 * MySQL
 
 ## Steps to run the project
-* Change Datasource settings in the application.properties to yours
 * run > mvn clean install
+* Change Datasource settings in the application.properties to yours
+* run the sql commands in the file: src/main/resources/static/SqlStatements.sql
 
 ## Database Design
 ![Alt text](./src/main/resources/static/db_design.PNG?raw=true "Title")
