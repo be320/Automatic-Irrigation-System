@@ -23,7 +23,7 @@ public class Plot implements Serializable {
     private Double topLeftLatitude;
 
     @Column(name="area")
-    private Integer area;
+    private Double area;
 
     @OneToMany(mappedBy = "plot", fetch = FetchType.LAZY)
     private List<TimeSlot> timeSlots;
@@ -56,11 +56,11 @@ public class Plot implements Serializable {
         this.topLeftLatitude = topLeftLatitude;
     }
 
-    public Integer getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 

@@ -20,8 +20,8 @@ public class AddPlotDTO {
     private Double topLeftLatitude;
 
     @NotNull
-    @JsonProperty("topLeftLatitude")
-    private Integer area;
+    @JsonProperty("area")
+    private Double area;
 
     public String getName() {
         return name;
@@ -47,11 +47,11 @@ public class AddPlotDTO {
         this.topLeftLatitude = topLeftLatitude;
     }
 
-    public Integer getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 }
