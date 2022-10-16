@@ -48,8 +48,10 @@ public class IrrigationScheduler {
                 irrigationProcessRepository.save(slot);
             }
             for (IrrigationProcess slot : slotsToEndIrrigationNow) {
-                sensor.finishIrrigationRequest(slot);
-                irrigationProcessRepository.save(slot);
+                if(!slot.getStatus().equals(StaticData.REJECTED)) {
+                    sensor.finishIrrigationRequest(slot);
+                    irrigationProcessRepository.save(slot);
+                }
             }
         }
         catch(Exception ex){
