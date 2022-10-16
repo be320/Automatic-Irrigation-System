@@ -48,7 +48,7 @@ public class IrrigationScheduler {
                 irrigationProcessRepository.save(slot);
             }
             for (IrrigationProcess slot : slotsToEndIrrigationNow) {
-                if(!slot.getStatus().equals(StaticData.REJECTED)) {
+                if(slot.getStatus().equals(StaticData.IN_PROGRESS_SLOT)) {
                     sensor.finishIrrigationRequest(slot);
                     irrigationProcessRepository.save(slot);
                 }
