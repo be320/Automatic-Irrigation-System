@@ -24,7 +24,7 @@ This Automatic Irrigation System provides APIs to help the user:
 * Run the sql commands in "src/main/resources/static/SqlStatements.sql"
 * Choose the test case you want to run in "src/main/java/com/farm/irregation/utils/DatabaseSeeder.java" by setting the attribute "yourTestCaseChoice"
 * Make sure to drop the schema between each test case and run the sql commands again so that the data in database can be clear to view
-* The two scenarios of Database Seeding will perform irrigation process happen every 5 minutes and the duration of each irrigation is 1 minute, Example(11:45 -> 11:46 then 11:50 ->11:51)
+* The two scenarios of Database Seeding will perform irrigation process happen every 2 minutes and the duration of each irrigation is 1 minute, Example(11:40 -> 11:41 then 11:42 ->11:43)
 * You can check the database data to see all the irrigation process, crop, timeslot and plot inserted
 * Use the postman collection to call the system APIs to try it by yourself, the collection is here: src/main/resources/static/Irrigation-System.postman_collection.json
 

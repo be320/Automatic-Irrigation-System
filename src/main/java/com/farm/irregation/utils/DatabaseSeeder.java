@@ -61,11 +61,11 @@ public class DatabaseSeeder implements CommandLineRunner {
     }
 
     public void addTimeSlot(){
-        // By this setup There will be irrigation process every 5 minutes and the length of each process will be for 1 minute
+        // By this setup There will be irrigation process every 2 minutes and the length of each process will be for 1 minute
         ConfigurePlotDTO configurePlotDTO = new ConfigurePlotDTO();
         configurePlotDTO.setStartDate(LocalDate.now().toString());
         configurePlotDTO.setEndDate(LocalDate.now().toString());
-        configurePlotDTO.setIrrigationsPerDay(288);
+        configurePlotDTO.setIrrigationsPerDay(720);
         configurePlotDTO.setIrrigationWaterAmount(5);
         plotService.configurePlot(1, 1, configurePlotDTO);
     }
