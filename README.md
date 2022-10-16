@@ -21,10 +21,12 @@ This Automatic Irrigation System provides APIs to help the user:
 ## Steps to run the project
 * Run > mvn clean install
 * Change Datasource settings in the application.properties to yours
-* Create The Database Schema by: CREATE SCHEMA `irrigation_system` ;
-* Choose the test case you want to run in "src/main/java/com/farm/irregation/utils/DatabaseSeeder.java"
-* Run the project and it will create the database tables for you
-* Use the postman collection to call the system APIs, the collection is here: src/main/resources/static/Irrigation-System.postman_collection.json
+* Run the sql commands in "src/main/resources/static/SqlStatements.sql"
+* Choose the test case you want to run in "src/main/java/com/farm/irregation/utils/DatabaseSeeder.java" by setting the attribute "yourTestCaseChoice"
+* Make sure to drop the schema between each test case and run the sql commands again so that the data in database can be clear to view
+* The two scenarios of Database Seeding will perform irrigation process happen every 5 minutes and the duration of each irrigation is 1 minute, Example(11:45 -> 11:46 then 11:50 ->11:51)
+* You can check the database data to see all the irrigation process, crop, timeslot and plot inserted
+* Use the postman collection to call the system APIs to try it by yourself, the collection is here: src/main/resources/static/Irrigation-System.postman_collection.json
 
 ## Database Design
 ![Alt text](./src/main/resources/static/db_design.PNG?raw=true "Database Design")

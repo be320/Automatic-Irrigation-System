@@ -7,6 +7,8 @@ import com.farm.irregation.model.Sensor;
 import com.farm.irregation.repository.CropRepository;
 import com.farm.irregation.repository.PlotRepository;
 import com.farm.irregation.service.PlotService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -25,10 +27,14 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Autowired
     PlotService plotService;
 
+    private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
+
+    private static final String yourTestCaseChoice = StaticData.FIRST_TEST_CASE;
+
     @Override
     public void run(String... args) {
         addCropAndPlot();
-        switch (StaticData.SECOND_TEST_CASE){
+        switch (yourTestCaseChoice){
             case StaticData.FIRST_TEST_CASE:
                 runFirstTestCase();
                 break;
@@ -39,6 +45,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                 break;
         }
         addTimeSlot();
+        logger.info("Database Seeding done successfully with");
     }
 
     private void addCropAndPlot(){
