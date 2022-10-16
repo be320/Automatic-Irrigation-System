@@ -29,23 +29,23 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(DatabaseSeeder.class);
 
-    private static final String yourTestCaseChoice = StaticData.FIRST_TEST_CASE;
+    private static final String yourTestCaseChoice = StaticData.FAILURE_TEST_CASE;
 
     @Override
     public void run(String... args) {
         addCropAndPlot();
         switch (yourTestCaseChoice){
-            case StaticData.FIRST_TEST_CASE:
+            case StaticData.SUCCESS_TEST_CASE:
                 runFirstTestCase();
                 break;
-            case StaticData.SECOND_TEST_CASE:
+            case StaticData.FAILURE_TEST_CASE:
                 runSecondTestCase();
                 break;
             default:
                 break;
         }
         addTimeSlot();
-        logger.info("Database Seeding done successfully with");
+        logger.info("Database Seeding done successfully with: " + yourTestCaseChoice);
     }
 
     private void addCropAndPlot(){

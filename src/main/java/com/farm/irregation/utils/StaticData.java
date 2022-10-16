@@ -23,6 +23,6 @@ public class StaticData {
     public static final String NOT_AVAILABLE = "Not Available";
 
     //Test Cases
-    public static final String FIRST_TEST_CASE = "firstTestCase";
-    public static final String SECOND_TEST_CASE = "secondTestCase";
+    public static final String SUCCESS_TEST_CASE = "successTestCase";
+    public static final String FAILURE_TEST_CASE = "failureTestCase";
 }

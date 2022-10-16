@@ -1,5 +1,6 @@
 package com.farm.irregation.utils;
 
+import com.farm.irregation.model.Alarm;
 import com.farm.irregation.model.IrrigationProcess;
 import com.farm.irregation.model.Sensor;
 import com.farm.irregation.repository.IrrigationProcessRepository;
@@ -25,6 +26,8 @@ public class IrrigationScheduler {
 
     private Sensor sensor = Sensor.getInstance();
 
+    private Alarm alarm = Alarm.getInstance();
+
     @Scheduled(fixedRate = StaticData.SENSOR_IRREGATION_CHECK_RATE)
     public void manageIrrigationProcess(){
         try {
@@ -40,6 +43,7 @@ public class IrrigationScheduler {
                     }
                     slot.setStatus(StaticData.REJECTED);
                     logger.info("Sensor rejected irrigation process: " + slot);
+                    alarm.ringAlert();
                 }
                 irrigationProcessRepository.save(slot);
             }
